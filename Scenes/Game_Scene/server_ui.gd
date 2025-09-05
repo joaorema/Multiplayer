@@ -6,7 +6,7 @@ extends Control
 @onready var host_button: Button = %Host
 @onready var join_button: Button = %Join
 @onready var server_label: Label = %Server_ip
-
+@onready var Player_name: LineEdit = %Player_Name
 
 
 func _on_host_pressed():
@@ -16,6 +16,7 @@ func _on_host_pressed():
 		if server_label:
 			server_label.text = "Server: " + multiplayer_manager.get_lan_ip() + ":7777"
 			server_label.show()
+			
 	else:
 		print("Failed to start server")
 
@@ -27,6 +28,7 @@ func _on_join_pressed():
 	var success = await multiplayer_manager.join_server(ip)
 	if success:
 		hide()
+		
 	else:
 		print("Failed to join server")
 		show()

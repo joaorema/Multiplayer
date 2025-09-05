@@ -1,4 +1,10 @@
 C:/Users/João Rema/Desktop/MultiPlayer
+res://Assets/Fonts/Asimovian
+res://Assets/Icon/menus
+res://temp
+res://
+res://Scenes/Weapons
+res://Scripts/Weapons
 res://Scenes/Menus
 res://Scripts/Managers
 res://Scenes/Game_Scene
@@ -6,7 +12,6 @@ res://Assets/shaders
 C:/Users/João Rema/Desktop
 C:/Users/João Rema/Desktop/game_linux
 res://Assets/Weapons/Ak_47
-res://temp
 res://Assets/Player/Texture
 res://Scripts/Enviroment
 res://Assets/Icon

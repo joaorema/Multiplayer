@@ -148,13 +148,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yc7ju")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ul0kl"]
-size = Vector3(0.77832, 0.288513, 0.196335)
+size = Vector3(0.77832, 0.288513, 0.0641594)
 
 [node name="Weapon_node" type="Area3D"]
-collision_layer = 4
 script = ExtResource("1_qja58")
 
 [node name="ak47" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_evybs")
 skeleton = NodePath("")
 
@@ -173,7 +173,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11084, -0.0700378, 0.0151291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11084, -0.0700378, -0.00730706)
 shape = SubResource("BoxShape3D_ul0kl")
 
 [node name="PickupLabel" type="Label3D" parent="."]

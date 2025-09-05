@@ -1,6 +1,6 @@
 # Weapon.gd
 extends "C:/Multiplayer/Scripts/Enviroment/Interactable.gd"
-class_name Weapon
+
 
 
 func interact(player: Node) -> void:
