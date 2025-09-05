@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3mef6rh0i7y5"]
+
+[ext_resource type="PackedScene" uid="uid://bfk6nsjlrqb42" path="res://Assets/World/coins/coin-gold.glb" id="1_c4khr"]
+[ext_resource type="Script" uid="uid://cb5mpcwjvyy86" path="res://Scripts/Enviroment/coin_scene.gd" id="2_b3iye"]
+[ext_resource type="AudioStream" uid="uid://bk5loml33f2na" path="res://Assets/Sounds/coin.wav" id="3_4f0r5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe018"]
+albedo_color = Color(0.677953, 0.480519, 0.0463051, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4f0r5"]
+
+[sub_resource type="Animation" id="Animation_dkxv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4f0r5"]
+resource_name = "Spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp3f2"]
+_data = {
+&"RESET": SubResource("Animation_dkxv1"),
+&"Spin": SubResource("Animation_4f0r5")
+}
+
+[node name="coin-gold2" instance=ExtResource("1_c4khr")]
+script = ExtResource("2_b3iye")
+
+[node name="coin-gold" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_xe018")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(0.485173, 0, 0, 0, 0.485173, 0, 0, 0, 0.485173, 0, 0.215967, 0)
+shape = SubResource("SphereShape3D_4f0r5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_pp3f2")
+}
+autoplay = "Spin"
+
+[node name="Sounds" type="AudioStreamPlayer3D" parent="." index="3"]
+unique_name_in_owner = true
+stream = ExtResource("3_4f0r5")

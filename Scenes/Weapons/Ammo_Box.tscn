@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl40a7jiuf4c"]
+
+[ext_resource type="PackedScene" uid="uid://uahkxsn3tdtc" path="res://Assets/Weapons/Ammo_Box/ammobox_low.glb" id="1_2h5y7"]
+[ext_resource type="Script" uid="uid://dgk6crmpx1lry" path="res://Scripts/Weapons/Ammo_Box_Center.gd" id="2_suvk6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wml6l"]
+radius = 0.248158
+height = 0.496317
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ammobox_low2" parent="." instance=ExtResource("1_2h5y7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0477968, -1.19209e-07, -0.0670524)
+
+[node name="Area3D" type="Area3D" parent="ammobox_low2"]
+script = ExtResource("2_suvk6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ammobox_low2/Area3D"]
+shape = SubResource("CapsuleShape3D_wml6l")

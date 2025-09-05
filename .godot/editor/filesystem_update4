@@ -1,0 +1,6 @@
+res://Scenes/Game_Scene/World.tscn
+res://Assets/shaders/Voxel_Terrain.gdshader
+res://Assets/shaders/Voxel_Water.gdshader
+res://Scenes/Game_Scene/server_ui.gd
+res://Scenes/Player/Player_Multiplayer.tscn
+res://Scenes/Menus/Main_menu.tscn

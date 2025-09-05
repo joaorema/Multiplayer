@@ -1,0 +1,18 @@
+[gd_scene load_steps=0 format=3 uid="uid://dsxbve24y03aa"]
+
+[node name="ui" type="CanvasLayer"]
+
+[node name="Host" type="Button" parent="."]
+offset_left = 606.0
+offset_right = 880.0
+offset_bottom = 166.0
+text = "HOST"
+metadata/_edit_use_anchors_ = true
+
+[node name="Join" type="Button" parent="."]
+offset_left = 881.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 165.0
+text = "JOIN"
+metadata/_edit_use_anchors_ = true

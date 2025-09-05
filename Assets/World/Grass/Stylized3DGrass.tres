@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://i40330o87bot"]
+
+[ext_resource type="Shader" path="res://Assets/World/Grass/GrassShader.tres" id="1_p8exy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w25ye"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_p8exy")
+shader_parameter/WindNoise = SubResource("NoiseTexture2D_w25ye")
+shader_parameter/BaseColor = Color(0.141176, 0.156863, 0.07451, 1)
+shader_parameter/WindColor = Color(0.384314, 0.529412, 0.301961, 1)
