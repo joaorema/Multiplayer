@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://buislk6idp15x"]
+[gd_scene load_steps=6 format=3 uid="uid://buislk6idp15x"]
 
 [ext_resource type="Script" uid="uid://nmdduvbye7t7" path="res://Scripts/Managers/Main_Menu.gd" id="1_ib0hw"]
-[ext_resource type="Texture2D" uid="uid://cko8cmaio6ufj" path="res://Assets/Icon/Game_Icon.png" id="2_0wcfy"]
+[ext_resource type="FontFile" uid="uid://qbfy3mwl13w0" path="res://Assets/Fonts/Asimovian/Asimovian-Regular.ttf" id="2_7vaxw"]
+[ext_resource type="Texture2D" uid="uid://bbmqq2lg0mp01" path="res://temp/blue_nebulae_1.png" id="3_hyg0c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4gb0r"]
+font = ExtResource("2_7vaxw")
+font_size = 25
 
 [sub_resource type="LabelSettings" id="LabelSettings_0wcfy"]
+font = ExtResource("2_7vaxw")
 font_size = 35
 
 [node name="Control" type="Control"]
@@ -19,7 +25,15 @@ offset_top = 212.136
 offset_right = 927.6
 offset_bottom = 296.136
 scale = Vector2(2.32, 2.613)
+
+[node name="Label" type="Label" parent="StartButton"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 85.0
 text = "Start Game"
+label_settings = SubResource("LabelSettings_4gb0r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExitButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -29,7 +43,15 @@ offset_top = 690.136
 offset_right = 927.6
 offset_bottom = 774.136
 scale = Vector2(2.32, 2.613)
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 85.0
 text = "Quit"
+label_settings = SubResource("LabelSettings_4gb0r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Controls" type="Button" parent="."]
 unique_name_in_owner = true
@@ -39,20 +61,20 @@ offset_top = 451.136
 offset_right = 927.6
 offset_bottom = 535.136
 scale = Vector2(2.32, 2.613)
-text = "Controlls"
 
-[node name="Icon" type="Sprite2D" parent="."]
-show_behind_parent = true
-light_mask = 2
-visibility_layer = 2
-position = Vector2(961.6, 539.136)
-scale = Vector2(1.88, 1.053)
-texture = ExtResource("2_0wcfy")
+[node name="Label" type="Label" parent="Controls"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 85.0
+text = "Controlls"
+label_settings = SubResource("LabelSettings_4gb0r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Controlls_Info" type="PopupPanel" parent="."]
 unique_name_in_owner = true
 title = "Controlls"
-position = Vector2i(1341, 298)
+position = Vector2i(881, 133)
 size = Vector2i(500, 500)
 visible = true
 
@@ -72,6 +94,11 @@ Drop Weapon: G"
 label_settings = SubResource("LabelSettings_0wcfy")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BlueNebulae1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(837, 1069)
+texture = ExtResource("3_hyg0c")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

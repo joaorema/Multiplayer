@@ -5,6 +5,9 @@ extends Node3D
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
 @export var server_ip : String = "127.0.0.1"
+@onready var Player_name : LineEdit = %Player_Name
+var chosen_name: String = "Player"  # default fallback
+
 
 # Reference to UI and world
 var ui_node: Control
@@ -184,3 +187,12 @@ func get_lan_ip() -> String:
 			return ip
 			
 	return "127.0.0.1"
+
+
+
+
+
+func _on_player_name_text_submitted(new_text: String) -> void:
+	if new_text.strip_edges() != "":
+		chosen_name = new_text
+		print(chosen_name)
