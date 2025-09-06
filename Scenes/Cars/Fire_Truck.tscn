@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=4 uid="uid://k2lbx8sqfdan"]
 
-[ext_resource type="Script" uid="uid://c4wau70vwfmys" path="res://Scripts/Car/vehicle.gd" id="1_wd8ay"]
+[ext_resource type="Script" uid="uid://c4wau70vwfmys" path="res://scripts/Car/vehicle.gd" id="1_wd8ay"]
 [ext_resource type="Texture2D" uid="uid://v5xo2b1o17gw" path="res://Assets/Cars/Race_Car/colormap.png" id="2_6gj2h"]
-[ext_resource type="Script" uid="uid://deidwcibjbk3s" path="res://Scripts/Car/firetruck_center.gd" id="3_smm8f"]
-[ext_resource type="Script" uid="uid://cmrl352ym8uri" path="res://Scripts/Car/wheel.gd" id="4_drj4m"]
+[ext_resource type="Script" uid="uid://deidwcibjbk3s" path="res://scripts/Car/firetruck_center.gd" id="3_smm8f"]
+[ext_resource type="Script" uid="uid://cmrl352ym8uri" path="res://scripts/Car/wheel.gd" id="4_drj4m"]
 [ext_resource type="ArrayMesh" uid="uid://dt0hhawa2qr4p" path="res://Assets/Cars/Race_Car/Wheel_Mesh.tres" id="5_ma7yc"]
 
 [sub_resource type="Curve" id="Curve_bt7kc"]

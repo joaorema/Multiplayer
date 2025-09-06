@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bl40a7jiuf4c"]
 
 [ext_resource type="PackedScene" uid="uid://uahkxsn3tdtc" path="res://Assets/Weapons/Ammo_Box/ammobox_low.glb" id="1_2h5y7"]
-[ext_resource type="Script" uid="uid://dgk6crmpx1lry" path="res://Scripts/Weapons/Ammo_Box_Center.gd" id="2_suvk6"]
+[ext_resource type="Script" uid="uid://dgk6crmpx1lry" path="res://scripts/Weapons/Ammo_Box_Center.gd" id="2_suvk6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wml6l"]
 radius = 0.248158

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b8nbf3sgtsqum" path="res://Assets/Weapons/Rocket_Launcher/rocketlaucher_rocketmat_color.png" id="1_lcf2e"]
 [ext_resource type="Texture2D" uid="uid://d2lovwymb7u3r" path="res://Assets/Weapons/Rocket_Launcher/rocketlaucher_rocketmat_normal.png" id="2_c0x16"]
-[ext_resource type="Script" uid="uid://b1dbswfvs05w3" path="res://Scripts/Weapons/rocketlaucher.gd" id="3_lppgo"]
+[ext_resource type="Script" uid="uid://b1dbswfvs05w3" path="res://scripts/Weapons/rocketlaucher.gd" id="3_lppgo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df5qb"]
 resource_name = "rocketmat"

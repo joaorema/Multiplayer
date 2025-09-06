@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=4 uid="uid://dq1axdkawm53k"]
 
-[ext_resource type="Script" uid="uid://c4wau70vwfmys" path="res://Scripts/Car/vehicle.gd" id="1_3wqir"]
+[ext_resource type="Script" uid="uid://c4wau70vwfmys" path="res://scripts/Car/vehicle.gd" id="1_3wqir"]
 [ext_resource type="Texture2D" uid="uid://v5xo2b1o17gw" path="res://Assets/Cars/Race_Car/colormap.png" id="2_53q5u"]
-[ext_resource type="Script" uid="uid://efnkiulm0xc0" path="res://Scripts/Car/race_car_center.gd" id="3_evl5p"]
-[ext_resource type="Script" uid="uid://cmrl352ym8uri" path="res://Scripts/Car/wheel.gd" id="4_vcced"]
+[ext_resource type="Script" uid="uid://efnkiulm0xc0" path="res://scripts/Car/race_car_center.gd" id="3_evl5p"]
+[ext_resource type="Script" uid="uid://cmrl352ym8uri" path="res://scripts/Car/wheel.gd" id="4_vcced"]
 [ext_resource type="ArrayMesh" uid="uid://dt0hhawa2qr4p" path="res://Assets/Cars/Race_Car/Wheel_Mesh.tres" id="5_2cpdo"]
 
 [sub_resource type="Curve" id="Curve_bt7kc"]
@@ -262,6 +262,10 @@ front_damping_ratio = 0.6
 rear_damping_ratio = 0.6
 braking_grip_multiplier = 2.0
 
+[node name="carcamera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01431, 2.03647)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34997e-13, 0.1, -3.60956e-16)
 shape = SubResource("ConvexPolygonShape3D_a0tx0")
@@ -273,16 +277,11 @@ skeleton = NodePath("")
 
 [node name="EnterArea" type="Area3D" parent="."]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("3_evl5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnterArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0507202, 0.477929, 0.0353394)
 shape = SubResource("BoxShape3D_goi5q")
-
-[node name="carcamera" type="Camera3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01431, 2.03647)
 
 [node name="WheelFrontLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("wheel_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.35, -0.66)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=108 format=4 uid="uid://c8mx6vyb217db"]
 
-[ext_resource type="Script" uid="uid://xenq6qpotuax" path="res://Scripts/Player/player.gd" id="1_sxq0v"]
+[ext_resource type="Script" uid="uid://xenq6qpotuax" path="res://scripts/Player/player.gd" id="1_sxq0v"]
 [ext_resource type="Texture2D" uid="uid://bpr05sv88n0vt" path="res://Assets/Player/Texture/rogue_texture.png" id="2_f36pb"]
-[ext_resource type="Script" uid="uid://b02ngqmpkk4xy" path="res://Scripts/Managers/Ui_labels.gd" id="3_jfm8o"]
+[ext_resource type="Script" uid="uid://b02ngqmpkk4xy" path="res://scripts/Managers/Ui_labels.gd" id="3_jfm8o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7s6mb"]
 font_size = 25

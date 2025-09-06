@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://cb8xo4himnpef"]
+[gd_scene load_steps=18 format=4 uid="uid://cb8xo4himnpef"]
 
-[ext_resource type="Script" uid="uid://cquggwudv14xp" path="res://smg_multiplayer.gd" id="1_idof0"]
+[ext_resource type="Script" uid="uid://cquggwudv14xp" path="res://scripts/Weapons/smg_multiplayer.gd" id="1_idof0"]
 [ext_resource type="Texture2D" uid="uid://qerb8fd3owyc" path="res://Assets/Weapons/Smg/mac10_mac10mat_color.png" id="2_mapfu"]
 [ext_resource type="Texture2D" uid="uid://bdjndqwq62owq" path="res://Assets/Weapons/Smg/mac10_mac10mat_normal.png" id="3_fhrbe"]
 
@@ -219,44 +219,6 @@ shadow_mesh = SubResource("ArrayMesh_nr1mv")
 radius = 0.166697
 height = 0.406367
 
-[sub_resource type="Animation" id="Animation_6e252"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("mac10:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ld1vp"]
-resource_name = "rotate"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("mac10:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c816j"]
-_data = {
-&"RESET": SubResource("Animation_6e252"),
-&"rotate": SubResource("Animation_ld1vp")
-}
-
 [node name="smg" type="Area3D"]
 script = ExtResource("1_idof0")
 
@@ -294,9 +256,3 @@ skeleton = NodePath("")
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_riogm")
-
-[node name="rotatesmg" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_c816j")
-}

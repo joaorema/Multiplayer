@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://btic0j56qsx1w"]
+
+[ext_resource type="PackedScene" uid="uid://de15pr834q2wx" path="res://scenes/Enviroment/Brick_Stack.tscn" id="1_fc085"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Stone_Bricks_Stack_Medium" parent="." instance=ExtResource("1_fc085")]

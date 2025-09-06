@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://buislk6idp15x"]
 
-[ext_resource type="Script" uid="uid://nmdduvbye7t7" path="res://Scripts/Managers/Main_Menu.gd" id="1_ib0hw"]
+[ext_resource type="Script" uid="uid://nmdduvbye7t7" path="res://scripts/Managers/Main_Menu.gd" id="1_ib0hw"]
 [ext_resource type="FontFile" uid="uid://qbfy3mwl13w0" path="res://Assets/Fonts/Asimovian/Asimovian-Regular.ttf" id="2_7vaxw"]
-[ext_resource type="Texture2D" uid="uid://bbmqq2lg0mp01" path="res://temp/blue_nebulae_1.png" id="3_hyg0c"]
+[ext_resource type="Texture2D" uid="uid://bbmqq2lg0mp01" path="res://Assets/Icon/menus/blue_nebulae_1.png" id="3_hyg0c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4gb0r"]
 font = ExtResource("2_7vaxw")

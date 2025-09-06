@@ -9,12 +9,12 @@ func _ready():
 	weapon_type = "assault_rifle"
 	max_ammo = 30
 	current_ammo = 30
-	reload_time = 2.5
-	weapon_range = 150.0
+	reload_time = 2.0
+	weapon_range = 100.0
 	damage = 30
-	fire_rate = 0.1
+	fire_rate = 0.25
 	ads_fov = 35.0
-	hole_size = 1.5  # Small holes for assault rifle
+	hole_size = 1.2  # Small holes for assault rifle
 	
 	# Override mesh and collision if needed
 	mesh_instance = $ak47 if has_node("ak47") else mesh_instance

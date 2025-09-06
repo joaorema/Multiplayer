@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://buc88106nb8xb" path="res://Assets/Weapons/Quad_Rocket/quadrocket_quadrocket_color.png" id="1_qh33w"]
 [ext_resource type="Texture2D" uid="uid://ciese5ofy64l7" path="res://Assets/Weapons/Quad_Rocket/quadrocket_quadrocket_normal.png" id="2_t5dau"]
-[ext_resource type="Script" uid="uid://cvl43lrl8t245" path="res://Scripts/Weapons/quadrocker.gd" id="3_o66qk"]
+[ext_resource type="Script" uid="uid://cvl43lrl8t245" path="res://scripts/Weapons/quadrocker.gd" id="3_o66qk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ip24p"]
 resource_name = "quadrocketmat"

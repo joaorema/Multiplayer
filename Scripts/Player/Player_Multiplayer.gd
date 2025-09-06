@@ -1,12 +1,16 @@
 extends CharacterBody3D
-
+# Change this line at the top of your player script:
+signal shot_hit(position: Vector3, collider: Node, hole_size: float, weapon_type: String)
+signal punch_hit(position: Vector3, collider: Node)
 # Current weapon stats (will be set by picked up weapon)
 var weapon_stats: Dictionary = {}
 var is_reloading: bool = false
 var can_shoot: bool = true
 var last_shot_time: float = 0.0
 var coin_count: int = 0
+var is_punching : bool = false
 
+var last_viewer_update_pos: Vector3
 @onready var coin_label: Label = %CoinLabel
 @onready var hp_label: Label = %Health
 @onready var weapon_label: Label = %Weapon
@@ -54,6 +58,10 @@ var controlled_rigid: RigidBody3D = null
 @export var can_fire: bool = true
 var is_cheering: bool = false
 
+
+var can_enter_car: bool = false
+var nearby_car: RigidBody3D = null
+
 #Movement variables
 @export_group("Speeds")
 @export var look_speed: float = 0.002
@@ -97,12 +105,28 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 		if event.is_action_pressed("cheer"):
 			cheer()
-		if event.is_action_pressed("interact") and !has_weapon:  # Make sure to define "interact" in input map (E key)
+		if event.is_action_pressed("interact") and !has_weapon and !is_in_car:  # Make sure to define "interact" in input map (E key)
 			try_pickup_weapon()
 			
 		if event.is_action_pressed("drop_weapon") and has_weapon:  # Define "drop_weapon" in input map (G key)
 			drop_current_weapon()
+		if event.is_action_pressed("interact"):
+			if not is_in_car and get_meta("can_enter_car", false):
+				# Entering car
+				var car_center = get_meta("near_car", null)
+				if car_center:
+					car_center.enter(self)
+			elif is_in_car:
+				# Exiting car - call the car's exit function
+				var car_center = get_meta("near_car", null)
+				if car_center:
+					car_center.exit()
+				else:
+					# Fallback - force exit if no car_center found
+					force_exit_car()
 		
+		if event.is_action_pressed("shoot") and !has_weapon:  # Define "punch" in input map (like F key)
+			punch()
 		if event.is_action_pressed("shoot") and has_weapon and can_shoot and not is_reloading:
 			shoot()
 		if event.is_action_pressed("aim"):
@@ -112,8 +136,64 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("reload") and has_weapon and get_current_ammo() < get_max_ammo() and not is_reloading:
 			reload_weapon()
 		
+		if event.is_action_pressed("destroy"):  # or any other key
+			test_terrain_destruction()
+		
 		if mouse_captured and event is InputEventMouseMotion:
 			rotate_look(event.relative)
+
+func force_exit_car():
+	print("Force exiting car")
+	if controlled_rigid:
+		controlled_rigid.set_multiplayer_authority(1)
+		controlled_rigid = null
+	
+	is_in_rigid = false
+	is_in_car = false
+	can_move = true
+	visible = true
+	
+	# Restore camera
+	camera.current = true
+	
+	# Optionally, disable car camera
+	var car_camera_target = get_tree().current_scene.get_node_or_null("Path/To/Car/carcamera")
+	if car_camera_target:
+		car_camera_target.current = false
+
+func punch():
+	print("Player punching!")
+	
+	# Raycast for punch (shorter range than weapons)
+	var space_state := get_world_3d().direct_space_state
+	var screen_center := get_viewport().get_visible_rect().size / 2
+	var from := camera.project_ray_origin(screen_center)
+	var to := from + camera.project_ray_normal(screen_center) * 0.3  # Short punch range
+	var ray := PhysicsRayQueryParameters3D.new()
+	ray.from = from
+	ray.to = to
+	ray.exclude = [self]
+	var result := space_state.intersect_ray(ray)
+	
+	if result:
+		print("Punch hit: ", result.collider.name, " at ", result.position)
+		emit_signal("punch_hit", result.position, result.collider)
+		hit_label.text = "Punched: %s" % [result.collider.name]
+	else:
+		print("Punch missed")
+		# Still emit signal for potential terrain interaction
+		emit_signal("punch_hit", to, null)
+		hit_label.text = "Punched air"
+	is_punching = true
+	anim_player.play("1H_Melee_Attack_Stab")
+	await anim_player.animation_finished
+	
+
+func test_terrain_destruction():
+	var test_pos = global_position + Vector3(0, -1, 0)  # Below player
+	var terrain = get_tree().get_first_node_in_group("terrain")
+	if terrain:
+		terrain._on_player_shot_hit(test_pos, terrain, 3.0, current_weapon)
 
 func try_pickup_weapon():
 	var areas = get_tree().get_nodes_in_group("weapons")
@@ -121,8 +201,6 @@ func try_pickup_weapon():
 		if area is Weapon and not area.is_picked_up:
 			if global_position.distance_to(area.global_position) <= 1.0:
 				area.pickup_weapon.rpc(get_multiplayer_authority())
-				weapon_label.show()
-				bullet_image.show()
 				return
 				
 
@@ -173,11 +251,13 @@ func get_weapon_scene_path(weapon_type: String) -> String:
 	# Return the correct scene path based on weapon type
 	match weapon_type.to_lower():
 		"assault_rifle":
-			return "C:/Multiplayer/Scenes/Weapons/Ak_47_Multiplayer.tscn"
+			return "res://Scenes/Weapons/Ak_47_Multiplayer.tscn"
 		"sniper":
-			return "C:/Multiplayer/Scenes/Weapons/awp_multiplayer.tscn"
+			return "res://Scenes/Weapons/awp_multiplayer.tscn"
 		"semi_automatic":
-			return "C:/Multiplayer/Scenes/Weapons/smg_multiplayer.tscn"
+			return "res://Scenes/Weapons/smg_multiplayer.tscn"
+		"paint":
+			return "res://Scenes/Weapons/paint.tscn"
 		_:
 			return ""
 
@@ -186,8 +266,7 @@ func drop_current_weapon():
 		return
 		
 	drop_weapon_rpc.rpc(global_position + Vector3(0, 0.4, 0))
-	weapon_label.hide()
-	bullet_image.hide()
+	
 
 @rpc("any_peer", "call_local", "reliable")
 func drop_weapon_rpc(drop_position: Vector3):
@@ -212,6 +291,8 @@ func drop_weapon_rpc(drop_position: Vector3):
 		equipped_weapon_node = null
 	
 	print("Player dropped weapon at: ", drop_position)
+	weapon_label.hide()
+	bullet_image.hide()
 
 func cheer():
 	is_cheering = true
@@ -240,6 +321,9 @@ func get_fire_rate() -> float:
 
 func get_weapon_range() -> float:
 	return weapon_stats.get("weapon_range", 100.0)
+
+func get_hole_size() -> float:
+	return weapon_stats.get("hole_size", 2.0)
 
 func get_ads_fov() -> float:
 	return weapon_stats.get("ads_fov", 40.0)
@@ -308,7 +392,8 @@ func shoot():
 	# Pass weapon damage to the RPC
 	shoot_rpc.rpc(from, to, hit_pos, collider_id, get_damage())
 	if result:
-		emit_signal("shot_hit", result.position, result.collider)
+		print("Player ", get_multiplayer_authority(), " emitting shot_hit signal at ", result.position)
+		emit_signal("shot_hit", result.position, result.collider,get_hole_size(), current_weapon)
 		print("Hit:", result.collider.name, "at", result.position)
 		hit_label.text = "Hit: %s" % [result.collider.name]
 		
@@ -318,6 +403,12 @@ func shoot():
 	can_fire = true
 	print("Ammo remaining: ", get_current_ammo())
 	update_weapon_display()
+
+func interact_with_terrain(position: Vector3, operation: String):
+	if is_multiplayer_authority():
+		var terrain = get_tree().get_first_node_in_group("terrain")
+		if terrain:
+			terrain.request_terrain_modification(position, 2.0, operation)
 
 @rpc("any_peer", "call_local", "reliable")
 func shoot_rpc(from: Vector3, to: Vector3, hit_pos: Vector3, collider_id: int, damage: int):
@@ -329,6 +420,12 @@ func shoot_rpc(from: Vector3, to: Vector3, hit_pos: Vector3, collider_id: int, d
 				hit_body.take_damage.rpc(damage, get_multiplayer_authority())
 			if hit_body.has_method("take_damage"):
 				hit_body.take_damage.rpc(damage, get_multiplayer_authority())
+			
+			# Emit signal for terrain destruction (visible to all clients)
+			shot_hit.emit(hit_pos, hit_body, get_hole_size(), current_weapon)
+	else:
+		# No collision, but still emit signal with position for potential terrain hits
+		shot_hit.emit(hit_pos, null, get_hole_size(), current_weapon)
 
 # Reload function
 func reload_weapon():
@@ -384,13 +481,112 @@ func update_crosshair_position():
 	var fov_ratio = camera.fov / normal_fov
 	
 
+func update_voxel_viewers():
+	var current_pos = global_position
+	
+	# If in car, use car position for voxel viewer
+	if is_in_rigid and controlled_rigid:
+		current_pos = controlled_rigid.global_position
+	
+	if current_pos.distance_to(last_viewer_update_pos) < 1.0:
+		return
+	# Only update if player has moved significantly (optimization)
+	if global_position.distance_to(last_viewer_update_pos) < 1.0:
+		return
+	
+	last_viewer_update_pos = global_position
+	
+	# Update local viewer (client side)
+	var game_world = get_tree().current_scene
+	if game_world and game_world.has_method("update_local_viewer_position"):
+		game_world.update_local_viewer_position()
+	
+	# Update server viewer for this player
+	if game_world and game_world.has_method("update_player_viewer_position"):
+		game_world.update_player_viewer_position(get_multiplayer_authority(), global_position)
+
+func handle_rigid_input():
+	if not controlled_rigid:
+		return
+	
+	if is_in_rigid:
+		# Steering
+		controlled_rigid.steering_input = Input.get_action_strength("move_left") - Input.get_action_strength("move_right")
+		
+		# Throttle
+		controlled_rigid.throttle_input = Input.get_action_strength("move_up")
+		
+		# Brake
+		controlled_rigid.brake_input = Input.get_action_strength("move_down")
+		
+		# Handbrake (you can use sprint key)
+		controlled_rigid.handbrake_input = Input.get_action_strength("sprint")
+
+func enter_car(car: RigidBody3D):
+	print("Entering car")
+	controlled_rigid = car
+	is_in_rigid = true
+	can_move = false
+	
+	# Hide player
+	visible = false
+	
+	# Give this player authority over the car
+	car.set_multiplayer_authority(get_multiplayer_authority())
+	
+	# Switch cameras
+	var car_camera_target: Camera3D = car.get_node_or_null("carcamera")
+	if car_camera_target:
+		print("found car camera")
+		camera.current = false                # disable player camera
+		car_camera_target.current = true      # enable car camera
+	else:
+		push_warning("No CarCamera found on car: %s" % car.name)
+
+func exit_car():
+	print("Exiting car")
+	if controlled_rigid:
+		# Remove car authority
+		controlled_rigid.set_multiplayer_authority(1)  # Give back to server
+		controlled_rigid = null
+	
+	is_in_rigid = false
+	can_move = true
+	visible = true
+	
+	# Restore camera to player
+	camera.current = true
+	
+	# Optionally, disable car camera
+	var car_camera_target = get_tree().current_scene.get_node_or_null("Path/To/Car/carcamera")
+	if car_camera_target:
+		car_camera_target.current = false
+
+# Detect nearby cars
+func _on_car_detection_area_entered(area):
+	if area.get_parent() is RigidBody3D:
+		nearby_car = area.get_parent()
+		can_enter_car = true
+		print("Can enter car")
+
+func _on_car_detection_area_exited(area):
+	if area.get_parent() == nearby_car:
+		nearby_car = null
+		can_enter_car = false
+		print("Left car area")
+
+
 # --- Physics/movement ---
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		if has_gravity:
 			if not is_on_floor():
 				velocity += get_gravity() * delta
-		
+				
+		update_voxel_viewers()
+		if is_in_rigid:
+			handle_rigid_input()  # Handle car controls
+			return
 		if can_jump:
 			if Input.is_action_just_pressed(input_jump) and is_on_floor():
 				velocity.y = jump_velocity
@@ -415,7 +611,7 @@ func _physics_process(delta: float) -> void:
 		# Move the player
 			velocity.x = move_dir.x * move_speed
 			velocity.z = move_dir.z * move_speed
-			if not is_cheering:
+			if not is_cheering :
 			# --- Animation ---
 				if input_dir.y > 0:
 					if anim_player.current_animation != "Walking_A":

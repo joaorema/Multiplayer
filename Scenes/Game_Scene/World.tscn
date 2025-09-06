@@ -1,19 +1,50 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6n0bm7m5gprt"]
+[gd_scene load_steps=37 format=3 uid="uid://b6n0bm7m5gprt"]
 
-[ext_resource type="Script" uid="uid://cqjji46qvth78" path="res://Scenes/Game_Scene/world.gd" id="1_tya5g"]
-[ext_resource type="PackedScene" uid="uid://418pv2mvyxh0" path="res://Scenes/Player/Player_Multiplayer.tscn" id="2_vh5np"]
+[ext_resource type="Script" uid="uid://cqjji46qvth78" path="res://scenes/Game_Scene/world.gd" id="1_tya5g"]
+[ext_resource type="PackedScene" uid="uid://418pv2mvyxh0" path="res://scenes/Player/Player_Multiplayer.tscn" id="2_vh5np"]
 [ext_resource type="Texture2D" uid="uid://c2kh20q147twd" path="res://Assets/Enviroment/Sunset.exr" id="3_mlqc5"]
-[ext_resource type="Script" uid="uid://crigkydri0px1" path="res://Scenes/Game_Scene/server_test.gd" id="3_pu1fa"]
-[ext_resource type="Script" uid="uid://d4dwkpr67wvss" path="res://Scenes/Game_Scene/server_ui.gd" id="3_snhcx"]
-[ext_resource type="Texture2D" uid="uid://bbmqq2lg0mp01" path="res://temp/blue_nebulae_1.png" id="4_verp3"]
+[ext_resource type="Script" uid="uid://crigkydri0px1" path="res://scenes/Game_Scene/server_test.gd" id="3_pu1fa"]
+[ext_resource type="Script" uid="uid://d4dwkpr67wvss" path="res://scenes/Game_Scene/server_ui.gd" id="3_snhcx"]
+[ext_resource type="Texture2D" uid="uid://bbmqq2lg0mp01" path="res://Assets/Icon/menus/blue_nebulae_1.png" id="4_verp3"]
 [ext_resource type="Shader" uid="uid://d33q43k1yjgtt" path="res://Assets/shaders/Voxel_Terrain.gdshader" id="7_4lb1d"]
-[ext_resource type="Texture2D" uid="uid://cko8cmaio6ufj" path="res://Assets/Icon/Game_Icon.png" id="7_a6adu"]
-[ext_resource type="PackedScene" uid="uid://ccioq17un0dhx" path="res://Scenes/Weapons/Ak_47_Multiplayer.tscn" id="7_jxmf1"]
-[ext_resource type="Texture2D" uid="uid://dogbjp67m8oq1" path="res://Assets/textures/dirt1_brown_qubodup_Lamoot_ccby3.png" id="8_snhcx"]
-[ext_resource type="PackedScene" uid="uid://dsqqh10w4xccm" path="res://Scenes/Enemies/enemy_skeleton.tscn" id="9_4lb1d"]
-[ext_resource type="Texture2D" uid="uid://dwbkbr05g22li" path="res://Assets/textures/grass01_albedo.jpg" id="9_pu1fa"]
-[ext_resource type="PackedScene" uid="uid://bympkjhkauds0" path="res://Scenes/Weapons/awp_multiplayer.tscn" id="10_pu1fa"]
-[ext_resource type="PackedScene" uid="uid://cb8xo4himnpef" path="res://Scenes/Weapons/smg_multiplayer.tscn" id="11_qvlj8"]
+[ext_resource type="PackedScene" uid="uid://ccioq17un0dhx" path="res://scenes/Weapons/Ak_47_Multiplayer.tscn" id="7_jxmf1"]
+[ext_resource type="PackedScene" uid="uid://dsqqh10w4xccm" path="res://scenes/Enemies/enemy_skeleton.tscn" id="9_4lb1d"]
+[ext_resource type="PackedScene" uid="uid://bympkjhkauds0" path="res://scenes/Weapons/awp_multiplayer.tscn" id="10_pu1fa"]
+[ext_resource type="Texture2D" uid="uid://74idxjisx0fr" path="res://Assets/textures/Floor/Rock12_rgh.jpg" id="11_p10bc"]
+[ext_resource type="PackedScene" uid="uid://cb8xo4himnpef" path="res://scenes/Weapons/smg_multiplayer.tscn" id="11_qvlj8"]
+[ext_resource type="Script" uid="uid://cqjhj8hvssmb2" path="res://scripts/Enviroment/voxel_terrain.gd" id="11_xhg2t"]
+[ext_resource type="Texture2D" uid="uid://befx2oavfokq4" path="res://Assets/textures/Floor/Pack/Dirt/Dirt_19-512x512.png" id="12_uxtd5"]
+[ext_resource type="Texture2D" uid="uid://cso8h280chpko" path="res://Assets/textures/Floor/dirt_albedo.png" id="13_4iahn"]
+[ext_resource type="Texture2D" uid="uid://clqa8d6mf08g6" path="res://Assets/textures/Floor/grass_albedo.png" id="14_3fx7k"]
+[ext_resource type="PackedScene" uid="uid://decdg4g04ppm1" path="res://scenes/Weapons/paint.tscn" id="15_sewwf"]
+[ext_resource type="PackedScene" uid="uid://dq1axdkawm53k" path="res://scenes/Cars/Race_Car.tscn" id="17_ixbq4"]
+[ext_resource type="PackedScene" uid="uid://dd40oxbk8l2pl" path="res://scenes/tracks/polar_pass.tscn" id="18_uno5p"]
+[ext_resource type="PackedScene" uid="uid://lst0nl0uv63k" path="res://scenes/Enviroment/fuel_barrel.tscn" id="20_wa710"]
+[ext_resource type="PackedScene" uid="uid://de15pr834q2wx" path="res://scenes/Enviroment/Brick_Stack.tscn" id="21_wa710"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sewwf"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_ixbq4"]
+height_start = -30.0
+height_range = 40.0
+noise = SubResource("FastNoiseLite_sewwf")
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_uno5p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p10bc"]
+render_priority = 0
+shader = ExtResource("7_4lb1d")
+shader_parameter/u_transition_mask = 0
+shader_parameter/u_voxel_virtual_texture_tile_size = 0
+shader_parameter/u_voxel_virtual_texture_fade = 0.0
+shader_parameter/u_voxel_cell_size = 0.0
+shader_parameter/u_voxel_block_size = 0
+shader_parameter/u_voxel_virtual_texture_offset_scale = Vector4(0, 0, 0, 0)
+shader_parameter/u_lod_fade = Vector2(0, 0)
+shader_parameter/u_texture_top = ExtResource("14_3fx7k")
+shader_parameter/u_texture_sides = ExtResource("13_4iahn")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3fx7k"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4lb1d"]
 panorama = ExtResource("3_mlqc5")
@@ -26,37 +57,26 @@ background_mode = 2
 background_energy_multiplier = 0.27
 sky = SubResource("Sky_snhcx")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lb1d"]
-albedo_texture = ExtResource("7_a6adu")
-uv1_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxtd5"]
+albedo_texture = ExtResource("11_p10bc")
 
 [sub_resource type="BoxMesh" id="BoxMesh_snhcx"]
-size = Vector3(15, 5, 15)
+size = Vector3(15, 3.5, 15)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pu1fa"]
-points = PackedVector3Array(-7.5, -2.5, -7.5, -7.5, 2.5, -7.5, 7.5, -2.5, -7.5, -7.5, -2.5, 7.5, -7.5, 2.5, 7.5, 7.5, 2.5, -7.5, 7.5, -2.5, 7.5, 7.5, 2.5, 7.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uno5p"]
+data = PackedVector3Array(-7.5, 1.75, 7.5, 7.5, 1.75, 7.5, -7.5, -1.75, 7.5, 7.5, 1.75, 7.5, 7.5, -1.75, 7.5, -7.5, -1.75, 7.5, 7.5, 1.75, -7.5, -7.5, 1.75, -7.5, 7.5, -1.75, -7.5, -7.5, 1.75, -7.5, -7.5, -1.75, -7.5, 7.5, -1.75, -7.5, 7.5, 1.75, 7.5, 7.5, 1.75, -7.5, 7.5, -1.75, 7.5, 7.5, 1.75, -7.5, 7.5, -1.75, -7.5, 7.5, -1.75, 7.5, -7.5, 1.75, -7.5, -7.5, 1.75, 7.5, -7.5, -1.75, -7.5, -7.5, 1.75, 7.5, -7.5, -1.75, 7.5, -7.5, -1.75, -7.5, 7.5, 1.75, 7.5, -7.5, 1.75, 7.5, 7.5, 1.75, -7.5, -7.5, 1.75, 7.5, -7.5, 1.75, -7.5, 7.5, 1.75, -7.5, -7.5, -1.75, 7.5, 7.5, -1.75, 7.5, -7.5, -1.75, -7.5, 7.5, -1.75, 7.5, 7.5, -1.75, -7.5, -7.5, -1.75, -7.5)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qvlj8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tc32s"]
+albedo_texture = ExtResource("12_uxtd5")
 
-[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_verp3"]
-height_start = -15.0
-height_range = 20.0
-noise = SubResource("FastNoiseLite_qvlj8")
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p10bc"]
+data = PackedVector3Array(-7.5, 1.75, 7.5, 7.5, 1.75, 7.5, -7.5, -1.75, 7.5, 7.5, 1.75, 7.5, 7.5, -1.75, 7.5, -7.5, -1.75, 7.5, 7.5, 1.75, -7.5, -7.5, 1.75, -7.5, 7.5, -1.75, -7.5, -7.5, 1.75, -7.5, -7.5, -1.75, -7.5, 7.5, -1.75, -7.5, 7.5, 1.75, 7.5, 7.5, 1.75, -7.5, 7.5, -1.75, 7.5, 7.5, 1.75, -7.5, 7.5, -1.75, -7.5, 7.5, -1.75, 7.5, -7.5, 1.75, -7.5, -7.5, 1.75, 7.5, -7.5, -1.75, -7.5, -7.5, 1.75, 7.5, -7.5, -1.75, 7.5, -7.5, -1.75, -7.5, 7.5, 1.75, 7.5, -7.5, 1.75, 7.5, 7.5, 1.75, -7.5, -7.5, 1.75, 7.5, -7.5, 1.75, -7.5, 7.5, 1.75, -7.5, -7.5, -1.75, 7.5, 7.5, -1.75, 7.5, -7.5, -1.75, -7.5, 7.5, -1.75, 7.5, 7.5, -1.75, -7.5, -7.5, -1.75, -7.5)
 
-[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_tya5g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wa710"]
+albedo_texture = ExtResource("13_4iahn")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhg2t"]
-render_priority = 0
-shader = ExtResource("7_4lb1d")
-shader_parameter/u_transition_mask = 0
-shader_parameter/u_voxel_virtual_texture_tile_size = 0
-shader_parameter/u_voxel_virtual_texture_fade = 0.0
-shader_parameter/u_voxel_cell_size = 0.0
-shader_parameter/u_voxel_block_size = 0
-shader_parameter/u_voxel_virtual_texture_offset_scale = Vector4(0, 0, 0, 0)
-shader_parameter/u_lod_fade = Vector2(0, 0)
-shader_parameter/u_texture_top = ExtResource("9_pu1fa")
-shader_parameter/u_texture_sides = ExtResource("8_snhcx")
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uxtd5"]
+data = PackedVector3Array(-7.5, 1.75, 7.5, 7.5, 1.75, 7.5, -7.5, -1.75, 7.5, 7.5, 1.75, 7.5, 7.5, -1.75, 7.5, -7.5, -1.75, 7.5, 7.5, 1.75, -7.5, -7.5, 1.75, -7.5, 7.5, -1.75, -7.5, -7.5, 1.75, -7.5, -7.5, -1.75, -7.5, 7.5, -1.75, -7.5, 7.5, 1.75, 7.5, 7.5, 1.75, -7.5, 7.5, -1.75, 7.5, 7.5, 1.75, -7.5, 7.5, -1.75, -7.5, 7.5, -1.75, 7.5, -7.5, 1.75, -7.5, -7.5, 1.75, 7.5, -7.5, -1.75, -7.5, -7.5, 1.75, 7.5, -7.5, -1.75, 7.5, -7.5, -1.75, -7.5, 7.5, 1.75, 7.5, -7.5, 1.75, 7.5, 7.5, 1.75, -7.5, -7.5, 1.75, 7.5, -7.5, 1.75, -7.5, 7.5, 1.75, -7.5, -7.5, -1.75, 7.5, 7.5, -1.75, 7.5, -7.5, -1.75, -7.5, 7.5, -1.75, 7.5, 7.5, -1.75, -7.5, -7.5, -1.75, -7.5)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_tya5g")
@@ -65,6 +85,17 @@ script = ExtResource("1_tya5g")
 unique_name_in_owner = true
 script = ExtResource("3_pu1fa")
 player_scene = ExtResource("2_vh5np")
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+generator = SubResource("VoxelGeneratorNoise2D_ixbq4")
+mesher = SubResource("VoxelMesherTransvoxel_uno5p")
+bounds = AABB(-112, -112, -112, 368, 368, 368)
+max_view_distance = 256
+material_override = SubResource("ShaderMaterial_p10bc")
+script = ExtResource("11_xhg2t")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="VoxelTerrain"]
+replication_config = SubResource("SceneReplicationConfig_3fx7k")
 
 [node name="Server_Ui" type="Control" parent="."]
 unique_name_in_owner = true
@@ -126,6 +157,7 @@ texture = ExtResource("4_verp3")
 
 [node name="Player_Name" type="LineEdit" parent="Server_Ui"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 700.0
 offset_top = 7.0
 offset_right = 1300.0
@@ -141,101 +173,141 @@ environment = SubResource("Environment_pu1fa")
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="Start_Platform" type="MeshInstance3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.10847, 0)
-material_override = SubResource("StandardMaterial3D_4lb1d")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 13.3735, 0, -11.7716, -14.3484)
+material_override = SubResource("StandardMaterial3D_uxtd5")
 mesh = SubResource("BoxMesh_snhcx")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Terrain/Start_Platform"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Start_Platform/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_pu1fa")
+shape = SubResource("ConcavePolygonShape3D_uno5p")
 
 [node name="Enemies Platform_1" type="MeshInstance3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.95432, 42.6632)
-material_override = SubResource("StandardMaterial3D_4lb1d")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.3793, 42.6632)
+material_override = SubResource("StandardMaterial3D_tc32s")
 mesh = SubResource("BoxMesh_snhcx")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Terrain/Enemies Platform_1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Enemies Platform_1/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_pu1fa")
+shape = SubResource("ConcavePolygonShape3D_p10bc")
 
 [node name="Enemies Platform_2" type="MeshInstance3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8956, -4.84952, 42.6585)
-material_override = SubResource("StandardMaterial3D_4lb1d")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8956, -5.28675, 42.6585)
+material_override = SubResource("StandardMaterial3D_wa710")
 mesh = SubResource("BoxMesh_snhcx")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Terrain/Enemies Platform_2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Enemies Platform_2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_pu1fa")
+shape = SubResource("ConcavePolygonShape3D_uxtd5")
 
-[node name="VoxelTerrain" type="VoxelTerrain" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46364, 0)
-generator = SubResource("VoxelGeneratorNoise2D_verp3")
-mesher = SubResource("VoxelMesherTransvoxel_tya5g")
-bounds = AABB(-112, -112, -112, 368, 368, 368)
-max_view_distance = 256
-material_override = SubResource("ShaderMaterial_xhg2t")
+[node name="Weapons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15062, -8.05154, -10.8811)
+
+[node name="weapon_node" parent="Weapons" instance=ExtResource("10_pu1fa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19463, -1.6413, 7.01355)
+
+[node name="smg" parent="Weapons" instance=ExtResource("11_qvlj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46049, -1.60117, 6.97469)
+
+[node name="Ak_1" parent="Weapons" instance=ExtResource("7_jxmf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44255, -1.6271, 7.0195)
+
+[node name="Paint" parent="Weapons" instance=ExtResource("15_sewwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62076, -2.036, 7.38721)
+
+[node name="weapon_node2" parent="Weapons" instance=ExtResource("10_pu1fa")]
+transform = Transform3D(0.440033, 0.897982, -3.9252e-08, 0, -4.37114e-08, -1, -0.897982, 0.440033, -1.92345e-08, 2.95357, -1.39752, 3.02571)
+
+[node name="smg2" parent="Weapons" instance=ExtResource("11_qvlj8")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.04096, -1.39168, 4.62573)
+
+[node name="Ak_2" parent="Weapons" instance=ExtResource("7_jxmf1")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.01772, -1.41398, 1.48834)
+
+[node name="Paint2" parent="Weapons" instance=ExtResource("15_sewwf")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 2.75259, -1.67331, 0.170804)
+
+[node name="Fuel_A_Barrel" parent="Weapons" instance=ExtResource("20_wa710")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.04716, -1.93051, 2.9926)
+
+[node name="Fuel_A_Barrel2" parent="Weapons" instance=ExtResource("20_wa710")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.04716, -1.93051, 1.39773)
+
+[node name="Fuel_A_Barrel3" parent="Weapons" instance=ExtResource("20_wa710")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.04716, -1.93051, 0.20912)
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15585, 0)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, 24.6817, -2.3686, 43.8232)
+attack_damage = 20
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(-0.18781, 0, -0.165007, 0, 0.25, 0, 0.165007, 0, -0.18781, 31.0713, 0.354233, 32.1175)
+attack_damage = 20
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(0.192539, 0, 0.159464, 0, 0.25, 0, -0.159464, 0, 0.192539, 38.939, -2.3826, 49.6183)
+attack_damage = 20
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(0.225159, 0, -0.108643, 0, 0.25, 0, 0.108643, 0, 0.225159, -7.11532, -4.44871, 49.4451)
+attack_damage = 20
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, 11.1377, 1.43014, 51.1664)
+attack_damage = 20
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, -6.82982, -4.4599, 38.5071)
+attack_damage = 20
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(-0.249644, 0, 0.0133411, 0, 0.25, 0, -0.0133411, 0, -0.249644, -0.0245247, -2.34149, 23.6349)
+attack_damage = 20
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("9_4lb1d")]
+transform = Transform3D(-0.21546, 0, 0.126794, 0, 0.25, 0, -0.126794, 0, -0.21546, 6.24635, -4.34609, 35.5841)
+attack_damage = 20
 
 [node name="Multiplayer_Spawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://418pv2mvyxh0")
 spawn_path = NodePath("..")
 
-[node name="Enemies" type="Node3D" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, 31.8712, -2.3686, 43.8232)
-attack_damage = 20
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, 31.8712, -2.37289, 39.4247)
-attack_damage = 20
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, 31.8712, -2.3826, 41.183)
-attack_damage = 20
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, -0.0245247, -3.42468, 44.9402)
-attack_damage = 20
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, 3.43675, -3.42468, 42.6636)
-attack_damage = 20
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, -3.29902, -3.42468, 42.6636)
-attack_damage = 20
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, -0.0245247, -3.42468, 39.3793)
-attack_damage = 20
-
-[node name="Enemy8" parent="Enemies" instance=ExtResource("9_4lb1d")]
-transform = Transform3D(0.00447216, 0, -0.24996, 0, 0.25, 0, 0.24996, 0, 0.00447216, -0.427617, -3.42468, 42.6636)
-attack_damage = 20
-
 [node name="Button" type="Button" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
+offset_left = -41.0
+offset_bottom = 31.0
 grow_horizontal = 0
 text = "EXIT"
 
-[node name="weapon_node" parent="." instance=ExtResource("10_pu1fa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19463, -1.34367, 7.01355)
+[node name="new_polar_pass" parent="." instance=ExtResource("18_uno5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.2839, -118.533)
 
-[node name="smg" parent="." instance=ExtResource("11_qvlj8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46049, -1.25835, 6.97469)
+[node name="Cars" type="Node3D" parent="."]
 
-[node name="Ak_1" parent="." instance=ExtResource("7_jxmf1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44255, -1.25416, 7.0195)
+[node name="race" parent="Cars" instance=ExtResource("17_ixbq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9504, -10.0006, -8.70696)
+
+[node name="race2" parent="Cars" instance=ExtResource("17_ixbq4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -25.7726, -119.854)
+
+[node name="race3" parent="Cars" instance=ExtResource("17_ixbq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55465, -9.91604, -14.2098)
+
+[node name="Fuel_A_Barrel" parent="." instance=ExtResource("20_wa710")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.18573, -9.97399, -6.26291)
+
+[node name="Stone_Bricks_Stack_Medium" parent="." instance=ExtResource("21_wa710")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.95691, 30.9265)
 
 [connection signal="pressed" from="Server_Ui/Host" to="Server_Ui" method="_on_host_pressed"]
 [connection signal="pressed" from="Server_Ui/Join" to="Server_Ui" method="_on_join_pressed"]

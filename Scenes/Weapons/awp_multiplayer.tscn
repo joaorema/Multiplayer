@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://bympkjhkauds0"]
+[gd_scene load_steps=18 format=4 uid="uid://bympkjhkauds0"]
 
-[ext_resource type="Script" uid="uid://b1gdyyjhqwbad" path="res://Scripts/Weapons/awp_Multiplayer.gd" id="1_iff7i"]
+[ext_resource type="Script" uid="uid://b1gdyyjhqwbad" path="res://scripts/Weapons/awp_Multiplayer.gd" id="1_iff7i"]
 [ext_resource type="Texture2D" uid="uid://dt1k5jiuqj4a5" path="res://Assets/Weapons/Awp/awp_snipermat_color.png" id="2_6ey2u"]
 [ext_resource type="Texture2D" uid="uid://bjulaueumoqkt" path="res://Assets/Weapons/Awp/awp_snipermat_normal.png" id="3_r5mcv"]
 
@@ -215,44 +215,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0s82h")
 
-[sub_resource type="Animation" id="Animation_8un63"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("awp:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_554sj"]
-resource_name = "rotate"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("awp:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7uuu"]
-_data = {
-&"RESET": SubResource("Animation_8un63"),
-&"rotate": SubResource("Animation_554sj")
-}
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tguds"]
 size = Vector3(1.2392, 1, 0.242432)
 
@@ -286,12 +248,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0556259, 0.0175252, 0)
 mesh = SubResource("ArrayMesh_jbgbx")
 skeleton = NodePath("")
-
-[node name="rotateawp" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_j7uuu")
-}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true

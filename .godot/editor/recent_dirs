@@ -1,4 +1,11 @@
-C:/Users/João Rema/Desktop/MultiPlayer
+res://scenes/Enviroment
+res://scenes/tracks
+res://scenes/Weapons
+res://scripts/Enviroment
+res://Assets/shaders
+res://Scripts/Enviroment
+C:/Users/João Rema/Desktop/Game
+C:/Users/João Rema/Desktop
 res://Assets/Fonts/Asimovian
 res://Assets/Icon/menus
 res://temp
@@ -8,15 +15,8 @@ res://Scripts/Weapons
 res://Scenes/Menus
 res://Scripts/Managers
 res://Scenes/Game_Scene
-res://Assets/shaders
-C:/Users/João Rema/Desktop
 C:/Users/João Rema/Desktop/game_linux
 res://Assets/Weapons/Ak_47
 res://Assets/Player/Texture
-res://Scripts/Enviroment
 res://Assets/Icon
 res://Scripts/Car
-res://Assets/Cars/Race_Car
-res://Assets/Weapons/Ammo_Box
-res://Assets/World/Grass
-res://Assets/Enemies/Skeleton

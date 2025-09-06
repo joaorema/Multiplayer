@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://ccioq17un0dhx"]
 
-[ext_resource type="Script" uid="uid://57yjdc06w4rq" path="res://Scripts/Weapons/Ak_47_Multiplayer.gd" id="1_qja58"]
+[ext_resource type="Script" uid="uid://57yjdc06w4rq" path="res://scripts/Weapons/Ak_47_Multiplayer.gd" id="1_qja58"]
 [ext_resource type="Texture2D" uid="uid://ckr8chxcvu8d5" path="res://Assets/Weapons/Ak_47/ak47_akmat_1.png" id="2_wepmc"]
 [ext_resource type="Texture2D" uid="uid://34ogug8ur7xc" path="res://Assets/Weapons/Ak_47/ak47_akmat.png" id="3_3tfqw"]
 

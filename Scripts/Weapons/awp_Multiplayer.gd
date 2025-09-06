@@ -9,19 +9,13 @@ func _ready():
 	weapon_type = "sniper"  # Make sure this matches your player script
 	max_ammo = 1
 	current_ammo = 1
-	reload_time = 2.5
-	weapon_range = 300.0
+	reload_time = 3.0
+	weapon_range = 200.0
 	damage = 100
-	fire_rate = 0.5
+	fire_rate = 0.3
 	ads_fov = 15.0
+	hole_size = 2.0
 	
-	# Override mesh and collision if needed
-	# Try these approaches:
-	if has_node("awp"):
-		mesh_instance = $awp
-	elif has_node("%awp"):
-		mesh_instance = %awp
-	# Keep the original mesh_instance if neither exists
-	
-	collision_shape = %CollisionShape3D
+	mesh_instance = %awp if has_node("awp") else mesh_instance
+	collision_shape = $CollisionShape3D
 	

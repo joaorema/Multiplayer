@@ -1,8 +1,8 @@
 [gd_scene load_steps=111 format=4 uid="uid://418pv2mvyxh0"]
 
-[ext_resource type="Script" uid="uid://du454l0gfbyem" path="res://Scripts/Player/Player_Multiplayer.gd" id="1_5t1fd"]
+[ext_resource type="Script" uid="uid://du454l0gfbyem" path="res://scripts/Player/Player_Multiplayer.gd" id="1_5t1fd"]
 [ext_resource type="Texture2D" uid="uid://bpr05sv88n0vt" path="res://Assets/Player/Texture/rogue_texture.png" id="2_djatp"]
-[ext_resource type="Texture2D" uid="uid://bhhorqnrut3ax" path="res://Assets/textures/Normal_bullet.png" id="3_5t1fd"]
+[ext_resource type="Texture2D" uid="uid://bhhorqnrut3ax" path="res://Assets/textures/Floor/Normal_bullet.png" id="3_5t1fd"]
 [ext_resource type="FontFile" uid="uid://qbfy3mwl13w0" path="res://Assets/Fonts/Asimovian/Asimovian-Regular.ttf" id="3_djatp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q22ip"]
@@ -2147,6 +2147,17 @@ tracks/54/path = NodePath("Rig/Skeleton3D:handslot.r")
 tracks/54/interp = 1
 tracks/54/loop_wrap = true
 tracks/54/keys = PackedFloat32Array(0, 1, -1.41953e-08, -1.74148e-08, 0.707107, 0.707107)
+tracks/55/type = "method"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath(".")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_a0u87"]
 resource_name = "1H_Ranged_Aiming"
@@ -30289,13 +30300,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0494098, 1.08586, 0)
 shape = SubResource("CapsuleShape3D_q22ip")
 
-[node name="WeaponRaycast" type="RayCast3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(0.159421, 0, -1.29019, 0, 1.3, 0, 1.29019, 0, 0.159421, 0.0767737, 1.51842, 0.698478)
-exclude_parent = false
-target_position = Vector3(0, 0, 100)
-collision_mask = 3
-
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64334, 0)
@@ -30670,7 +30674,7 @@ mesh = SubResource("ArrayMesh_saavs")
 skeleton = NodePath("")
 
 [node name="Knife_Offhand" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-4.10824e-07, 0.262865, 0.964833, 1, -9.19082e-07, 7.15256e-07, 1.0175e-06, 0.964833, -0.262865, 0.507764, 0.636705, -0.018536)
+transform = Transform3D(-4.10824e-07, 0.262865, 0.964832, 1, -8.59477e-07, 6.25849e-07, 1.0473e-06, 0.964833, -0.262865, 0.507764, 0.636705, -0.0185361)
 visible = false
 bone_name = "Knife_Offhand"
 bone_idx = 10
@@ -30680,7 +30684,7 @@ mesh = SubResource("ArrayMesh_so4bm")
 skeleton = NodePath("")
 
 [node name="1H_Crossbow" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-1.35016e-06, -0.149895, -0.988702, -1, -4.16409e-07, 1.46031e-06, -4.91598e-07, 0.988702, -0.149895, -0.489506, 0.745658, 0.0963391)
+transform = Transform3D(-1.52898e-06, -0.149895, -0.988702, -1, -2.67397e-07, 1.66893e-06, -4.91598e-07, 0.988702, -0.149895, -0.489506, 0.745658, 0.0963391)
 visible = false
 bone_name = "1H_Crossbow"
 bone_idx = 16
@@ -30690,7 +30694,7 @@ mesh = SubResource("ArrayMesh_nryo0")
 skeleton = NodePath("")
 
 [node name="Throwable" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-1.35016e-06, -0.149895, -0.988702, -1, -4.16409e-07, 1.46031e-06, -4.91598e-07, 0.988702, -0.149895, -0.518077, 0.64103, 0.28479)
+transform = Transform3D(-1.52898e-06, -0.149895, -0.988702, -1, -2.67397e-07, 1.66893e-06, -4.91598e-07, 0.988702, -0.149895, -0.518077, 0.64103, 0.28479)
 visible = false
 bone_name = "Throwable"
 bone_idx = 17
@@ -30700,7 +30704,7 @@ mesh = SubResource("ArrayMesh_nyger")
 skeleton = NodePath("")
 
 [node name="Knife" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-1.35016e-06, -0.149895, -0.988702, -1, -4.16409e-07, 1.46031e-06, -4.91598e-07, 0.988702, -0.149895, -0.491059, 0.64103, 0.10658)
+transform = Transform3D(-1.52898e-06, -0.149895, -0.988702, -1, -2.67397e-07, 1.66893e-06, -4.91598e-07, 0.988702, -0.149895, -0.491059, 0.64103, 0.10658)
 visible = false
 bone_name = "Knife"
 bone_idx = 18
@@ -30710,7 +30714,7 @@ mesh = SubResource("ArrayMesh_nvc7l")
 skeleton = NodePath("")
 
 [node name="2H_Crossbow" type="BoneAttachment3D" parent="Rig/Skeleton3D"]
-transform = Transform3D(-1.35016e-06, -0.149895, -0.988702, -1, -4.16409e-07, 1.46031e-06, -4.91598e-07, 0.988702, -0.149895, -0.489506, 0.745658, 0.0963391)
+transform = Transform3D(-1.52898e-06, -0.149895, -0.988702, -1, -2.67397e-07, 1.66893e-06, -4.91598e-07, 0.988702, -0.149895, -0.489506, 0.745658, 0.0963391)
 visible = false
 bone_name = "2H_Crossbow"
 bone_idx = 19
