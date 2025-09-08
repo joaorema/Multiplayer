@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bympkjhkauds0"]
+[gd_scene load_steps=21 format=4 uid="uid://bympkjhkauds0"]
 
 [ext_resource type="Script" uid="uid://b1gdyyjhqwbad" path="res://scripts/Weapons/awp_Multiplayer.gd" id="1_iff7i"]
 [ext_resource type="Texture2D" uid="uid://dt1k5jiuqj4a5" path="res://Assets/Weapons/Awp/awp_snipermat_color.png" id="2_6ey2u"]
@@ -216,7 +216,44 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0s82h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tguds"]
-size = Vector3(1.2392, 1, 0.242432)
+size = Vector3(1.2392, 0.290771, 0.149841)
+
+[sub_resource type="Animation" id="Animation_78w2e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("awp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n4o2w"]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("awp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ipnn"]
+_data = {
+&"RESET": SubResource("Animation_78w2e"),
+&"shoot": SubResource("Animation_n4o2w")
+}
 
 [node name="weapon_node" type="Area3D"]
 script = ExtResource("1_iff7i")
@@ -251,5 +288,11 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203522, 0, -0.0279541)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203522, 0.0257568, 0.0210877)
 shape = SubResource("BoxShape3D_tguds")
+
+[node name="Awp_shoot" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5ipnn")
+}

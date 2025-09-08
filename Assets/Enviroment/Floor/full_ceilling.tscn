@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=4 uid="uid://cdsobtliub5k7"]
+
+[ext_resource type="Texture2D" uid="uid://bn3n5a8fg55qa" path="res://temp/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/dungeon_texture.png" id="1_o5yy5"]
+[ext_resource type="PackedScene" uid="uid://rrblsq0hqvtc" path="res://temp/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/ceiling_tile.gltf" id="2_12xhk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pqqf"]
+resource_name = "texture"
+albedo_texture = ExtResource("1_o5yy5")
+roughness = 0.45
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qd44o"]
+_surfaces = [{
+"aabb": AABB(-2, -0.250001, -2, 4, 0.350002, 4),
+"format": 34359742465,
+"index_count": 180,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAwAAAAUAAwAFAAQAAQAEAAYABQAGAAQAAgABAAYABQAHAAYAAgAGAAcAAAAIAAUACAAHAAUACQAAAAIAAAAJAAgACgACAAcACQACAAoACgAHAAsACAALAAcACQAMAAgADAALAAgACQANAAwADQAJAAoADgAKAAsADQAKAA4ADgALAA8ADAAPAAsAEAAOAA8ADQARAAwAEQAPAAwAEAAPABIAEQASAA8AEwAOABAAEwANAA4AEwAQABIADQATABEAEwASABEAFAAVABYAFQAXABYAFAAYABUAFgAXABkAFgAZABQAFAAaABgAFAAZABoAGAAbABUAFQAbABcAGAAaABsAGQAXABsAGQAbABoAHAAdAB4AHQAfAB4AHAAgAB0AHgAfACEAHgAhABwAHAAiACAAHAAhACIAIAAjAB0AHQAjAB8AIAAiACMAIQAfACMAIQAjACIA"),
+"name": "texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAAAQFLMzD0AAIA/AAAAwN3MzD0AAABAAAAAwALNzD0AAIA/AAAAQC7MzD0AAABAAAAAQAnOTL0AAABAAAAAQMHNTL0AAIA/AAAAwKvMTL0AAABAAAAAwGPMTL0AAIA/AAAAQHnNTL0AAACAAAAAQHbMzD0AAACAAAAAwCbNzD0AAACAAAAAwBvMTL0AAACAAAAAQDHNTL0AAIC/AAAAQJrMzD0AAIC/AAAAwErNzD0AAIC/AAAAwNPLTL0AAIC/AAAAwG7NzD0AAADAAAAAQOnMTL0AAADAAAAAwIvLTL0AAADAAAAAQL/MzD0AAADAAAAAQOnMTL3MzEw/AAAAwKvMTL2amZk/AAAAwIvLTL3MzEw/AAAAwLD/f76oX1o/AAAAQAnOTL2amZk/AAAAQAQAgL6oX1o/AAAAQCgAgL4k0JI/AAAAwPj/f74k0JI/AAAAQOnMTL2amZm/AAAAwKvMTL3MzEy/AAAAwIvLTL2amZm/AAAAwLD/f74s0JK/AAAAQAnOTL3MzEy/AAAAQAQAgL4s0JK/AAAAQCgAgL64X1q/AAAAwPj/f764X1q/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4gmtg"]
+resource_name = "ceiling_tile_ceiling_tile"
+_surfaces = [{
+"aabb": AABB(-2, -0.250001, -2, 4, 0.350002, 4),
+"attribute_data": PackedByteArray("rpBnP7RaSz6yBXU/tFpLPrIFdT+0Wks+rpBnP7RaSz6ukGc/tFpLPrIFdT+0Wks+rpBnP7RaSz6yBXU/tFpLPq6QZz+0Wks+sgV1P7RaSz6usGc/tNoYPrIldT+02jg+rrBnP7TaGD6yJXU/tNo4Pq6QZz+0Wks+sgV1P7RaSz6ukGc/tFpLPrIFdT+0Wks+rpBnP7RaSz6ukGc/tFpLPq6QZz+0Wks+rpBnP7RaSz6ukGc/tFpLPq6QZz+0Wks+rpBnP7RaSz6ukGc/tFpLPq6QZz+0Wks+rpBnP7RaSz6yBXU/tFpLPrIFdT+0Wks+sgV1P7RaSz6yBXU/tFpLPrIFdT+0Wks+sgV1P7RaSz6yBXU/tFpLPrIFdT+0Wks+sgV1P7RaSz6yBXU/tFpLPrIFdT+0Wks+rpBnP7RaSz6yBXU/tFpLPq6QZz+0Wks+XGGHPrTaOD5kS6I+tNo4PmRLoj602jg+XGGHPrTaOD5cYYc+tNoYPmRLoj602hg+XGGHPrTaGD5kS6I+tNoYPmRLoj602jg+ZEuiPrTaOD5kS6I+tNo4PmRLoj602jg+XGGHPrTaOD5kS6I+tNo4PmRLoj602jg+XGGHPrTaOD5kS6I+tNo4Plxhhz602jg+XGGHPrTaOD5kS6I+tNo4Plxhhz602jg+XGGHPrTaOD5cYYc+tNo4Plxhhz602jg+XGGHPrTaOD5kS6I+tNo4PmRLoj602jg+XGGHPrTaOD5cYYc+tNoYPmRLoj602hg+XGGHPrTaGD5kS6I+tNoYPmRLoj602jg+ZEuiPrTaOD5kS6I+tNo4PmRLoj602jg+XGGHPrTaOD5kS6I+tNo4PmRLoj602jg+XGGHPrTaOD5kS6I+tNo4Plxhhz602jg+XGGHPrTaOD5kS6I+tNo4Plxhhz602jg+XGGHPrTaOD5cYYc+tNo4Plxhhz602jg+rrBnP7TaSD6yJXU/tNooPq6wZz+02kg+siV1P7TaKD6usGc/aLXxPbIldT+02ig+rrBnP2i18T2usGc/tNooPrIldT9otfE9rrBnP7TaKD6yJXU/aLXxPQ=="),
+"format": 34359742487,
+"index_count": 180,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAEAAUABgAFAAcACAAGAAcACAAHAAkACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFgASABQAFgAUABcAGAAWABcAGAAXABkAGgAYABkAGgAZABsAHAAdAB4AHAAfAB0AIAAcAB4AIAAeACEAIgAgACEAIgAhACMAJAAiACMAJAAjACUAJgAnACgAJgApACcAKgArACwAKgAtACsALgAvADAALgAxAC8AMgAzADQAMgA1ADMANgA3ADgANgA5ADcAOgA7ADwAOgA9ADsAPgA/AEAAPgBBAD8AQgBDAEQAQgBFAEMARgBHAEgARgBJAEcASgBLAEwASgBNAEsATgBPAFAATgBRAE8AUgBTAFQAUgBVAFMAVgBXAFgAVgBZAFcAWgBbAFwAWgBdAFsAXgBfAF0AXgBdAGAAYQBiAGMAYQBkAGIA"),
+"material": SubResource("StandardMaterial3D_7pqqf"),
+"name": "texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 101,
+"vertex_data": PackedByteArray("AAAAQFLMzD0AAIA/AAAAwN3MzD0AAABAAAAAwALNzD0AAIA/AAAAQC7MzD0AAABAAAAAQHbMzD0AAACAAAAAwCbNzD0AAACAAAAAQJrMzD0AAIC/AAAAwErNzD0AAIC/AAAAQL/MzD0AAADAAAAAwG7NzD0AAADAAAAAQMHNTL0AAIA/AAAAwKvMTL0AAABAAAAAQAnOTL0AAABAAAAAwGPMTL0AAIA/AAAAQL/MzD0AAADAAAAAwIvLTL0AAADAAAAAQOnMTL0AAADAAAAAwG7NzD0AAADAAAAAQJrMzD0AAIC/AAAAQOnMTL0AAADAAAAAQDHNTL0AAIC/AAAAQL/MzD0AAADAAAAAQHbMzD0AAACAAAAAQHnNTL0AAACAAAAAQFLMzD0AAIA/AAAAQMHNTL0AAIA/AAAAQC7MzD0AAABAAAAAQAnOTL0AAABAAAAAwALNzD0AAIA/AAAAwKvMTL0AAABAAAAAwGPMTL0AAIA/AAAAwN3MzD0AAABAAAAAwCbNzD0AAACAAAAAwBvMTL0AAACAAAAAwErNzD0AAIC/AAAAwNPLTL0AAIC/AAAAwG7NzD0AAADAAAAAwIvLTL0AAADAAAAAwN3MzD0AAABAAAAAQAnOTL0AAABAAAAAwKvMTL0AAABAAAAAQC7MzD0AAABAAAAAQOnMTL3MzEw/AAAAwKvMTL2amZk/AAAAwIvLTL3MzEw/AAAAQAnOTL2amZk/AAAAQAQAgL6oX1o/AAAAwPj/f74k0JI/AAAAQCgAgL4k0JI/AAAAwLD/f76oX1o/AAAAwKvMTL2amZk/AAAAwLD/f76oX1o/AAAAwIvLTL3MzEw/AAAAwPj/f74k0JI/AAAAQAnOTL2amZk/AAAAwPj/f74k0JI/AAAAwKvMTL2amZk/AAAAQCgAgL4k0JI/AAAAwIvLTL3MzEw/AAAAQAQAgL6oX1o/AAAAQOnMTL3MzEw/AAAAwLD/f76oX1o/AAAAQOnMTL3MzEw/AAAAQCgAgL4k0JI/AAAAQAnOTL2amZk/AAAAQAQAgL6oX1o/AAAAQOnMTL2amZm/AAAAwKvMTL3MzEy/AAAAwIvLTL2amZm/AAAAQAnOTL3MzEy/AAAAQAQAgL4s0JK/AAAAwPj/f764X1q/AAAAQCgAgL64X1q/AAAAwLD/f74s0JK/AAAAwKvMTL3MzEy/AAAAwLD/f74s0JK/AAAAwIvLTL2amZm/AAAAwPj/f764X1q/AAAAQAnOTL3MzEy/AAAAwPj/f764X1q/AAAAwKvMTL3MzEy/AAAAQCgAgL64X1q/AAAAwIvLTL2amZm/AAAAQAQAgL4s0JK/AAAAQOnMTL2amZm/AAAAwLD/f74s0JK/AAAAQOnMTL2amZm/AAAAQCgAgL64X1q/AAAAQAnOTL3MzEy/AAAAQAQAgL4s0JK/AAAAQDHNTL0AAIC/AAAAwBvMTL0AAACAAAAAQHnNTL0AAACAAAAAwNPLTL0AAIC/AAAAQOnMTL0AAADAAAAAwIvLTL0AAADAAAAAQDHNTL0AAIC/AAAAQHnNTL0AAACAAAAAwGPMTL0AAIA/AAAAQMHNTL0AAIA/AAAAwBvMTL0AAACA/3/+/////z//f/7/////P/9//v////8//3/+/////z//f/7/////P/9//v////8//3/+/////z//f/7/////P/9//v////8//3/+/////z//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/////////+//////////7//////////v/////////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////78AAP9/////PwAA/3////8/AAD/f////z8AAP9/////PwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////v/9//3////8//3//f////z//f/9/////P/9//3////8//3/+/////z//f/7/////P/9//v////8//3/+/////z//fwAA////v/9/AAD///+//38AAP///7//fwAA////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//38sZf///z//fyxl////P/9/LGX///8//38sZf///z/SGgAA////v9IaAAD///+/0hoAAP///7/SGgAA////v////3////+/////f////7////9/////v////3////+//3/+/////z//f/7/////P/9//v////8//3/+/////z//fwAA////v/9/AAD///+//38AAP///7//fwAA////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//38sZf///z//fyxl////P/9/LGX///8//38sZf///z/SGgAA////v9IaAAD///+/0hoAAP///7/SGgAA////v////3////+/////f////7////9/////v////3////+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qd44o")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa2yq"]
+size = Vector3(15.9811, 0.402893, 15.9997)
+
+[node name="Full_ceilling" type="Node3D"]
+
+[node name="ceiling_tile2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00132203, 3.90072, -0.000903249)
+
+[node name="ceiling_tile" type="MeshInstance3D" parent="ceiling_tile2"]
+mesh = SubResource("ArrayMesh_4gmtg")
+skeleton = NodePath("")
+
+[node name="ceiling_tile3" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98914, 3.90072, -0.000903249)
+
+[node name="ceiling_tile4" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98067, 3.90072, -0.000903249)
+
+[node name="ceiling_tile5" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9561, 3.90072, -0.000903249)
+
+[node name="ceiling_tile6" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00132203, 3.90072, -4.00152)
+
+[node name="ceiling_tile7" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98914, 3.90072, -4.00152)
+
+[node name="ceiling_tile8" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98067, 3.90072, -4.00152)
+
+[node name="ceiling_tile9" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9561, 3.90072, -4.00152)
+
+[node name="ceiling_tile10" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00132203, 3.90072, -7.99446)
+
+[node name="ceiling_tile11" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98914, 3.90072, -7.99446)
+
+[node name="ceiling_tile12" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98067, 3.90072, -7.99446)
+
+[node name="ceiling_tile13" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9561, 3.90072, -7.99446)
+
+[node name="ceiling_tile14" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00132203, 3.90072, -11.9794)
+
+[node name="ceiling_tile15" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98914, 3.90072, -11.9794)
+
+[node name="ceiling_tile16" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98067, 3.90072, -11.9794)
+
+[node name="ceiling_tile17" parent="." instance=ExtResource("2_12xhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9561, 3.90072, -11.9794)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97408, 3.81457, -5.98899)
+shape = SubResource("BoxShape3D_pa2yq")

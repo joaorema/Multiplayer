@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://m4e52olil1fg"
+path.s3tc="res://.godot/imported/crt_tv_1.png-f2609e46593cd9f785fff049424cdc1d.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d5b33642460b647007c31c68a9fe6f5f"
+}
+
+[deps]
+
+source_file="res://Assets/Enviroment/tv/crt_tv_1.png"
+dest_files=["res://.godot/imported/crt_tv_1.png-f2609e46593cd9f785fff049424cdc1d.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://temp/tv/crt_tv_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

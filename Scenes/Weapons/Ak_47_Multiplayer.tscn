@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://ccioq17un0dhx"]
+[gd_scene load_steps=17 format=4 uid="uid://ccioq17un0dhx"]
 
 [ext_resource type="Script" uid="uid://57yjdc06w4rq" path="res://scripts/Weapons/Ak_47_Multiplayer.gd" id="1_qja58"]
 [ext_resource type="Texture2D" uid="uid://ckr8chxcvu8d5" path="res://Assets/Weapons/Ak_47/ak47_akmat_1.png" id="2_wepmc"]
@@ -148,7 +148,68 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yc7ju")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ul0kl"]
-size = Vector3(0.77832, 0.288513, 0.0641594)
+size = Vector3(0.77832, 0.235077, 0.0641594)
+
+[sub_resource type="Animation" id="Animation_4ing5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ak47:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ak47:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y6wa0"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ak47:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.5, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ak47:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1.10957, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.349066, 0.139626), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4p32x"]
+_data = {
+&"RESET": SubResource("Animation_4ing5"),
+&"shoot": SubResource("Animation_y6wa0")
+}
 
 [node name="Weapon_node" type="Area3D"]
 script = ExtResource("1_qja58")
@@ -173,8 +234,14 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11084, -0.0700378, -0.00730706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11084, -0.0433197, -0.00730706)
 shape = SubResource("BoxShape3D_ul0kl")
 
 [node name="PickupLabel" type="Label3D" parent="."]
 transform = Transform3D(0.576537, 0, 0, 0, 0.576537, 0, 0, 0, 0.576537, 0, 0.394382, 0)
+
+[node name="ak_shoot" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4p32x")
+}

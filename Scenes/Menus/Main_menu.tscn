@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://buislk6idp15x"]
+[gd_scene load_steps=7 format=3 uid="uid://buislk6idp15x"]
 
 [ext_resource type="Script" uid="uid://nmdduvbye7t7" path="res://scripts/Managers/Main_Menu.gd" id="1_ib0hw"]
+[ext_resource type="PackedScene" uid="uid://b6n0bm7m5gprt" path="res://scenes/Game_Scene/World.tscn" id="2_7j38l"]
 [ext_resource type="FontFile" uid="uid://qbfy3mwl13w0" path="res://Assets/Fonts/Asimovian/Asimovian-Regular.ttf" id="2_7vaxw"]
 [ext_resource type="Texture2D" uid="uid://bbmqq2lg0mp01" path="res://Assets/Icon/menus/blue_nebulae_1.png" id="3_hyg0c"]
 
@@ -16,6 +17,7 @@ font_size = 35
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ib0hw")
+game_scene = ExtResource("2_7j38l")
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true

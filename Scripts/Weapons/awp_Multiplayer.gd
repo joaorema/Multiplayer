@@ -16,6 +16,7 @@ func _ready():
 	ads_fov = 15.0
 	hole_size = 2.0
 	
-	mesh_instance = %awp if has_node("awp") else mesh_instance
+	mesh_instance = %awp
 	collision_shape = $CollisionShape3D
+	shoot_anim = %Awp_shoot
 	

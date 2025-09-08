@@ -17,5 +17,6 @@ func _ready():
 	hole_size = 1.2  # Small holes for assault rifle
 	
 	# Override mesh and collision if needed
-	mesh_instance = $ak47 if has_node("ak47") else mesh_instance
+	mesh_instance = $ak47 
 	collision_shape = $CollisionShape3D
+	shoot_anim = %ak_shoot

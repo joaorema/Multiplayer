@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bii048djv4g17"
+path.s3tc="res://.godot/imported/poker_board_game_table_-_downloadable_14.png-753aaf05c67ef8915a18f685a6c26ebc.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "6cc2f7087c42bce2a3ca3a21463de977"
+}
+
+[deps]
+
+source_file="res://Assets/Enviroment/game_table/poker_board_game_table_-_downloadable_14.png"
+dest_files=["res://.godot/imported/poker_board_game_table_-_downloadable_14.png-753aaf05c67ef8915a18f685a6c26ebc.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://temp/game_table/poker_board_game_table_-_downloadable_15.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

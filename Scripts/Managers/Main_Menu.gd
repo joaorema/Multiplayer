@@ -5,7 +5,7 @@ extends Control
 @onready var controll_button: Button = %Controls
 @onready var info_popup: PopupPanel = %Controlls_Info
 
-@export var game_scene: PackedScene = preload("res://Scenes/Game_Scene/World.tscn")
+@export var game_scene: PackedScene 
 @export var popup_open: bool = false
 
 

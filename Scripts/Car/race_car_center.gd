@@ -11,7 +11,7 @@ var driver: CharacterBody3D = null
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
-	print("Car system ready. Controlled Rigid: ", controlled_rigid)
+
 
 func _on_body_entered(body: Node) -> void:
 	if body is CharacterBody3D and body.is_in_group("PlayerCharacter"):
@@ -46,15 +46,20 @@ func enter(driver_player: CharacterBody3D) -> void:
 	driver.visible = false
 	driver.can_move = false
 	driver.is_in_car = true
-	driver.is_in_rigid = true  # Add this line
+	driver.is_in_rigid = true
 	driver.controlled_rigid = controlled_rigid
 	driver.camera.current = false
 	
 	car_camera.current = true
 	is_in_rigid = true
 	
-	# Set car authority to the driver
+	# IMPORTANT: Set car authority to the driver
 	controlled_rigid.set_multiplayer_authority(driver.get_multiplayer_authority())
+	
+	# If the car has a MultiplayerSynchronizer, update its authority too
+	var sync_node = controlled_rigid.get_node_or_null("MultiplayerSynchronizer")
+	if sync_node:
+		sync_node.set_multiplayer_authority(driver.get_multiplayer_authority())
 
 func exit() -> void:
 	if not driver:
@@ -76,11 +81,13 @@ func exit() -> void:
 	driver.camera.current = true
 	car_camera.current = false
 	
-	# Give car authority back to server
+	# Give car authority back to server (peer 1)
 	controlled_rigid.set_multiplayer_authority(1)
 	
-	# Keep the metadata so player can enter again
-	# Don't remove the near_car meta here unless they're actually far away
+	# If the car has a MultiplayerSynchronizer, update its authority too
+	var sync_node = controlled_rigid.get_node_or_null("MultiplayerSynchronizer")
+	if sync_node:
+		sync_node.set_multiplayer_authority(1)
 	
 	driver = null
 	is_in_rigid = false

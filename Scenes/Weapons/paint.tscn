@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://decdg4g04ppm1"]
+[gd_scene load_steps=10 format=4 uid="uid://decdg4g04ppm1"]
 
-[ext_resource type="Script" uid="uid://cjmelstllv55r" path="res://scripts/paint_weapon.gd" id="1_1th2s"]
+[ext_resource type="Script" uid="uid://cjmelstllv55r" path="res://scripts/Weapons/paint_weapon.gd" id="1_1th2s"]
 [ext_resource type="Texture2D" uid="uid://ciuiiqgvqgkpp" path="res://Assets/Weapons/Nail_Gun/low_poly_nailgun_0.png" id="2_rwcuf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68bfh"]
@@ -46,6 +46,43 @@ shadow_mesh = SubResource("ArrayMesh_t4pug")
 radius = 0.303481
 height = 0.606961
 
+[sub_resource type="Animation" id="Animation_rwcuf"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.100015, -0.377105)]
+}
+
+[sub_resource type="Animation" id="Animation_1th2s"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.100015, -0.377105), Vector3(-0.1, 0.1, -0.377), Vector3(0, 0.100015, -0.377105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gguhb"]
+_data = {
+&"RESET": SubResource("Animation_rwcuf"),
+&"shoot": SubResource("Animation_1th2s")
+}
+
 [node name="Paint" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0761089, -0.487646, 0.262562)
 script = ExtResource("1_1th2s")
@@ -60,3 +97,9 @@ skeleton = NodePath("")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 3.55271e-15, 0, -3.55271e-15, 1, -0.0545597, 0.397084, -0.258479)
 shape = SubResource("CapsuleShape3D_gguhb")
+
+[node name="Paint_shoot" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_gguhb")
+}

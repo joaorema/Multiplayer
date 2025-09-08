@@ -3,6 +3,8 @@ extends CharacterBody3D
 @export var CoinScene: PackedScene
 @onready var anim_enemy: AnimationPlayer = %enenyanimation
 
+var knockback: Vector3 = Vector3.ZERO
+var knockback_decay: float = 15.0  # how fast it wears off
 @export var attack_range: float = 10.0
 @export var move_speed: float = 3.0
 @export var rotation_speed: float = 5.0
@@ -10,6 +12,9 @@ extends CharacterBody3D
 @export var attack_damage: int = 10
 @export var attack_cooldown: float = 1.5
 @export var detection_range: float = 10.0
+var is_being_hit: bool = false
+var hit_timer: float = 0.0
+var hit_duration: float = 0.5
 
 # Synchronized variables
 var health: int
@@ -64,6 +69,31 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if is_dead:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+	
+	# Handle hit state timer
+	if is_being_hit:
+		hit_timer -= delta
+		if hit_timer <= 0:
+			is_being_hit = false
+	
+	# Apply knockback and handle hit state
+	if knockback.length() > 0.01:
+		velocity += knockback
+		knockback = knockback.move_toward(Vector3.ZERO, knockback_decay * delta)
+		
+		# Don't change animation while being hit and knocked back
+		if not is_being_hit:
+			if anim_enemy.current_animation != "Hit_A" and anim_enemy.has_animation("Hit_A"):
+				play_animation_rpc.rpc("Hit_A")
+		
+		move_and_slide()
+		return
+	
+	# Don't do normal AI behavior while being hit
+	if is_being_hit:
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
@@ -144,17 +174,31 @@ func attack():
 	can_attack = true
 
 @rpc("any_peer", "call_local", "reliable")
-func take_damage(amount: int, attacker_id: int):
-	"""Take damage from any player"""
+func take_damage(amount: int, attacker_id: int, knockback_dir: Vector3 = Vector3.ZERO):
 	if is_dead:
 		return
-	
-	# Only server processes damage
 	if not is_multiplayer_authority():
 		return
-		
+
 	health -= amount
 	print("Enemy took ", amount, " damage. Health: ", health)
+
+	if knockback_dir != Vector3.ZERO:
+		var knockback_strength = 1.0
+		if amount >= 50:
+			knockback_strength = 2.0
+		elif amount >= 25:
+			knockback_strength = 1.0
+		
+		knockback = knockback_dir.normalized() * knockback_strength
+		
+		# Set hit state to prevent animation interruption
+		is_being_hit = true
+		hit_timer = hit_duration
+		
+		# Play hit animation
+		if anim_enemy.has_animation("Hit_A"):
+			play_animation_rpc.rpc("Hit_A")
 	
 	if health <= 0:
 		die()

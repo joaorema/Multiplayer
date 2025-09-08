@@ -16,5 +16,6 @@ func _ready():
 	ads_fov = 15.0
 	hole_size = 0.8
 	
-	mesh_instance = %mac10 if has_node("mac10") else mesh_instance
+	mesh_instance = %mac10 
 	collision_shape = $CollisionShape3D
+	shoot_anim = %Smg_anim

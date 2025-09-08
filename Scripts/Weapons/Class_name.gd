@@ -15,14 +15,13 @@ class_name Weapon
 
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
+@onready var shoot_anim: AnimationPlayer = $AnimationPlayer
 
 var is_picked_up: bool = false
 var current_player_near: CharacterBody3D = null
 
 func _ready():
 	add_to_group("weapons")
-	print("Weapon collision shape enabled? ", not collision_shape.disabled)
-	print("Weapon collision layer: ", collision_layer, " mask: ", collision_mask)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	set_multiplayer_authority(1)
